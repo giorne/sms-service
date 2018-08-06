@@ -20,7 +20,7 @@ public class SmsServiceApplication {
 		return args -> {
 			UserMemory.newUser(
 					UserMemory.User.builder()
-						.username("Giorne")
+						.username("GIORNE")
 						.deviceId("12345")
 						.balance(BigDecimal.valueOf(1000))
 						.build()
@@ -28,7 +28,7 @@ public class SmsServiceApplication {
 
 			UserMemory.newUser(
 					UserMemory.User.builder()
-						.username("Flitz")
+						.username("FLITZ")
 						.deviceId("54321")
 						.balance(BigDecimal.valueOf(500))
 						.build()
@@ -36,7 +36,7 @@ public class SmsServiceApplication {
 
 			UserMemory.newUser(
 					UserMemory.User.builder()
-						.username("Paul")
+						.username("PAUL")
 						.deviceId("159753")
 						.balance(BigDecimal.valueOf(200))
 						.build()

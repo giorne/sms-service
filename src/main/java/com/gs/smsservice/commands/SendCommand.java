@@ -38,8 +38,7 @@ public class SendCommand implements Command {
 
         checkUser(recipientUsername);
         checkFunds(senderUsername, amount);
-
-        transferManager.sendMoney(senderUsername, recipientUsername, amount);
+        sendMoney(senderUsername, recipientUsername, amount);
 
         return SUCCESS;
     }
@@ -81,6 +80,11 @@ public class SendCommand implements Command {
         if (!userManager.existsUser(username)) {
             throw new UserNotFoundException(username);
         }
+    }
+
+    private void sendMoney(final String senderUsername, final String recipientUsername, BigDecimal amount) {
+        log.info("Sending {} from user {} to {}", amount, senderUsername, recipientUsername);
+        transferManager.sendMoney(senderUsername, recipientUsername, amount);
     }
 
 }
