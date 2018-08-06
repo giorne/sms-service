@@ -43,11 +43,11 @@ There are three users which are created in memory when the app runs:
   }
 ]
 ```
-#### With swagger
+#### Using swagger
 
 You can see the api docs here: http://localhost:8080/swagger-ui.html
 
-#### With curl
+#### Using curl
 
 ```sh
 curl -d '{"deviceId": "deviceId", "smsContent": "smsContent"}' -H "Content-Type: application/json" -X POST http://localhost:8080/api/sms/commands
