@@ -3,7 +3,6 @@ package com.gs.smsservice.handler;
 import com.gs.smsservice.commands.Command;
 import com.gs.smsservice.commands.executor.CommandExecutor;
 import com.gs.smsservice.commands.factory.CommandFactory;
-import com.gs.smsservice.execeptions.UnknownCommandException;
 import org.springframework.stereotype.Service;
 
 import static com.gs.smsservice.constants.ResponseMessages.UNKNOWN_COMMAND;
