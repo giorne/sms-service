@@ -14,7 +14,6 @@ public class SmsRequest {
     @NotEmpty
     private String deviceId;
 
-    @NotEmpty
     private String smsContent;
 
 }

@@ -15,7 +15,7 @@ public class CommandFactoryTest {
         final Class expectedClass = BalanceCommand.class;
 
         // when I execute the factory
-        final Command command = CommandFactory.getCommand(smsContent);
+        final Command command = new CommandFactory().getCommand(smsContent);
 
         // the typeClass should be BalanceCommand
         assertEquals(expectedClass, command.getClass());
@@ -28,7 +28,7 @@ public class CommandFactoryTest {
         final Class expectedClass = SendCommand.class;
 
         // when I execute the factory
-        final Command command = CommandFactory.getCommand(smsContent);
+        final Command command = new CommandFactory().getCommand(smsContent);
 
         // the typeClass should be SendCommand
         assertEquals(expectedClass, command.getClass());
@@ -41,7 +41,7 @@ public class CommandFactoryTest {
         final Class expectedClass = TotalSentCommand.class;
 
         // when I execute the factory
-        final Command command = CommandFactory.getCommand(smsContent);
+        final Command command = new CommandFactory().getCommand(smsContent);
 
         // the typeClass should be TotalSentCommand
         assertEquals(expectedClass, command.getClass());
@@ -54,7 +54,7 @@ public class CommandFactoryTest {
         final Class expectedClass = TotalSentMsmithCommand.class;
 
         // when I execute the factory
-        final Command command = CommandFactory.getCommand(smsContent);
+        final Command command = new CommandFactory().getCommand(smsContent);
 
         // the typeClass should be TotalSentMsmithCommand
         assertEquals(expectedClass, command.getClass());
@@ -66,7 +66,7 @@ public class CommandFactoryTest {
         final String smsContent = "TOTAL_SENT-GIORNE-MSMITH";
 
         // when I execute the factory
-        CommandFactory.getCommand(smsContent);
+        new CommandFactory().getCommand(smsContent);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -75,7 +75,7 @@ public class CommandFactoryTest {
         final String smsContent = "";
 
         // when I execute the factory
-        CommandFactory.getCommand(smsContent);
+        new CommandFactory().getCommand(smsContent);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -84,7 +84,7 @@ public class CommandFactoryTest {
         final String smsContent = null;
 
         // when I execute the factory
-        CommandFactory.getCommand(smsContent);
+        new CommandFactory().getCommand(smsContent);
     }
 
 }

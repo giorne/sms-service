@@ -24,7 +24,7 @@ public class CommandFactory {
         commandByRegex.put(TotalSentMsmithCommand.COMMAND_REGEX, ()  -> new TotalSentMsmithCommand(new UserManagerImpl(), new TransferManagerImpl()));
     }
 
-    public static Command getCommand(final String smsContent) {
+    public Command getCommand(final String smsContent) {
 
         if (isEmpty(smsContent)) {
             throw new IllegalArgumentException("Sms content cannot be null");

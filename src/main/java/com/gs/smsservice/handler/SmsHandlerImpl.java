@@ -19,9 +19,9 @@ public class SmsHandlerImpl implements SmsHandler {
 
     public String handleSmsRequest(String smsContent, String senderDeviceId) {
         try {
-            final Command command = CommandFactory.getCommand(smsContent.toUpperCase());
+            final Command command = commandFactory.getCommand(smsContent);
             return new CommandExecutor(smsContent, senderDeviceId).execute(command);
-        } catch (UnknownCommandException ex) {
+        } catch (RuntimeException ex) {
             return UNKNOWN_COMMAND;
         }
     }
