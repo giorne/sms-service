@@ -12,6 +12,7 @@
 This app requires maven to run. Download it and follow the steps:
 
 ```sh
+$ git clone https://github.com/giornesouza/sms-service
 $ cd sms-service
 $ mvn install
 $ mvn spring-boot:run
