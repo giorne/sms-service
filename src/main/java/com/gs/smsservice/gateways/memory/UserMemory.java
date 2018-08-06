@@ -30,7 +30,36 @@ public class UserMemory {
     public static List<Transaction> getTransactionByUser(final String username) {
         return users.stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username))
-                .findFirst().get().getTransactions();
+                .findFirst().get()
+                .getTransactions();
+    }
+
+    public static User getUser(final String username) {
+        return users.stream()
+                .filter(user -> user.getUsername().equalsIgnoreCase(username))
+                .findFirst()
+                .get();
+    }
+
+    public static BigDecimal getBalance(final String username) {
+        return users.stream()
+                .filter(user -> user.getUsername().equalsIgnoreCase(username))
+                .map(UserMemory.User::getBalance)
+                .findFirst()
+                .orElse(BigDecimal.ZERO);
+    }
+
+    public static boolean existsUser(final String username) {
+        return users.stream()
+                .anyMatch(user -> user.getUsername().equalsIgnoreCase(username));
+    }
+
+    public static String getUsernameByDeviceId(final String deviceId) {
+        return UserMemory.getUsers().stream()
+                .filter(user -> user.getDeviceId().equalsIgnoreCase(deviceId))
+                .findFirst()
+                .orElse(null)
+                .getUsername();
     }
 
     @Getter

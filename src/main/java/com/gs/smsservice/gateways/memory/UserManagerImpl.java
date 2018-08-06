@@ -10,26 +10,17 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public boolean existsUser(String username) {
-        return UserMemory.getUsers().stream()
-                .anyMatch(user -> user.getUsername().equalsIgnoreCase(username));
+        return UserMemory.existsUser(username);
     }
 
     @Override
     public BigDecimal getBalance(String username) {
-        return UserMemory.getUsers().stream()
-                .filter(user -> user.getUsername().equalsIgnoreCase(username))
-                .map(UserMemory.User::getBalance)
-                .findFirst()
-                .orElse(BigDecimal.ZERO);
+        return UserMemory.getBalance(username);
     }
 
     @Override
     public String getUserNameForDeviceId(String deviceId) {
-        return UserMemory.getUsers().stream()
-                .filter(user -> user.getDeviceId().equalsIgnoreCase(deviceId))
-                .findFirst()
-                .orElse(null)
-                .getUsername();
+        return UserMemory.getUsernameByDeviceId(deviceId);
     }
 
 }
