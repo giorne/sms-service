@@ -2,8 +2,9 @@ package com.gs.smsservice.commands.factory;
 
 import com.gs.smsservice.commands.*;
 import com.gs.smsservice.execeptions.UnknownCommandException;
-import com.gs.smsservice.gateways.memory.TransferManagerImpl;
-import com.gs.smsservice.gateways.memory.UserManagerImpl;
+import com.gs.smsservice.gateways.TransferManager;
+import com.gs.smsservice.gateways.UserManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -15,14 +16,17 @@ import static org.springframework.util.StringUtils.isEmpty;
 @Component
 public class CommandFactory {
 
-    private final static Map<String, Supplier<Command>> commandByRegex = new HashMap<>();
+    @Autowired
+    private UserManager userManager;
 
-    static {
-        commandByRegex.put(BalanceCommand.COMMAND_REGEX, ()  -> new BalanceCommand(new UserManagerImpl()));
-        commandByRegex.put(SendCommand.COMMAND_REGEX, ()  -> new SendCommand(new UserManagerImpl(), new TransferManagerImpl()));
-        commandByRegex.put(TotalSentCommand.COMMAND_REGEX, ()  -> new TotalSentCommand(new UserManagerImpl(), new TransferManagerImpl()));
-        commandByRegex.put(TotalSentMsmithCommand.COMMAND_REGEX, ()  -> new TotalSentMsmithCommand(new UserManagerImpl(), new TransferManagerImpl()));
-    }
+    @Autowired
+    private TransferManager transferManager;
+
+    private Map<String, Supplier<Command>> commandByRegex = new HashMap<String, Supplier<Command>>() {{
+        put(BalanceCommand.COMMAND_REGEX, ()  -> new BalanceCommand(userManager));
+        put(SendCommand.COMMAND_REGEX, ()  -> new SendCommand(userManager, transferManager));
+        put(TotalSentCommand.COMMAND_REGEX, ()  -> new TotalSentCommand(userManager, transferManager));
+    }};
 
     public Command getCommand(final String smsContent) {
 
