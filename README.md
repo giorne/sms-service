@@ -1,4 +1,4 @@
-# Sms command handler service
+# Sms command handler service (used for a test)
 
 ### What was used
 - Springboot
